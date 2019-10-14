@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import {View, Image} from 'react-native';
 
+const img = require('../../img/jokenpo.png');
+
 class Top extends Component {
   render() {
     return (
       <View>
-        <Image source={require('../../img/jokenpo.png')} />
+        <Image source={img} />
       </View>
     );
   }

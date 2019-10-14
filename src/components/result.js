@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
 
+const imgRock = require('../../img/pedra.png');
+const imgPaper = require('../../img/papel.png');
+const imgScissors = require('../../img/tesoura.png');
+
 //Style
 
 const Style = StyleSheet.create({
   resultView: {
     alignItems: 'center',
-  },
-  textResult: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'red',
   },
   iconResultView: {
     alignItems: 'center',
@@ -31,26 +30,25 @@ class Result extends Component {
       return (
         <View style={Style.iconResultView}>
           <Text style={Style.textResultView}>{this.props.player}</Text>
-          <Image source={require('../../img/pedra.png')} />
+          <Image source={imgRock} />
         </View>
       );
     } else if (this.props.choice === 'Paper') {
       return (
         <View style={Style.iconResultView}>
           <Text style={Style.textResultView}>{this.props.player}</Text>
-          <Image source={require('../../img/papel.png')} />
+          <Image source={imgPaper} />
         </View>
       );
     } else if (this.props.choice === 'Scissors') {
       return (
         <View style={Style.iconResultView}>
           <Text style={Style.textResultView}>{this.props.player}</Text>
-          <Image source={require('../../img/tesoura.png')} />
+          <Image source={imgScissors} />
         </View>
       );
-    } else {
-      return false;
     }
+    return false;
   }
 }
 

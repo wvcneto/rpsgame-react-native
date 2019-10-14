@@ -19,6 +19,12 @@ const Style = {
     justifyContent: 'space-between',
     margin: 10,
   },
+  textResult: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'red',
+    textAlign: 'center',
+  },
 };
 
 //Components
@@ -33,8 +39,8 @@ class rpsgame extends Component {
   }
 
   jokenpo(userChoice) {
-    var rand = Math.floor(Math.random() * 3);
-    var computerChoice = '';
+    const rand = Math.floor(Math.random() * 3);
+    let computerChoice = '';
 
     switch (rand) {
       case 0:
@@ -46,9 +52,11 @@ class rpsgame extends Component {
       case 2:
         computerChoice = 'Scissors';
         break;
+      default:
+        computerChoice = '';
     }
 
-    var result = '';
+    let result = '';
 
     if (computerChoice === 'Rock') {
       if (userChoice === 'Rock') {
@@ -83,9 +91,9 @@ class rpsgame extends Component {
     }
 
     this.setState({
-      userChoice: userChoice,
-      computerChoice: computerChoice,
-      result: result,
+      userChoice, // userChoice : userChoice - nomes iguais auto atribuição
+      computerChoice,
+      result,
     }); // alterando o state
   }
 
@@ -121,7 +129,7 @@ class rpsgame extends Component {
         </View>
         <View style={Style.resultView}>
           <Text style={Style.textResult}>{this.state.result}</Text>
-          <Result choice={this.state.userChoice} player="Player" />
+          <Result choice={this.state.userChoice} player="You" />
           <Result choice={this.state.computerChoice} player="Computer" />
         </View>
       </View>
