@@ -1,6 +1,9 @@
 //Imports
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Button, Image} from 'react-native';
+import {AppRegistry, View, Text, Button} from 'react-native';
+
+import Top from './src/components/top';
+import Result from './src/components/result';
 
 //Style
 
@@ -16,65 +19,9 @@ const Style = {
     justifyContent: 'space-between',
     margin: 10,
   },
-  resultView: {
-    alignItems: 'center',
-  },
-  textResult: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'red',
-  },
-  iconResultView: {
-    alignItems: 'center',
-    margin: 20,
-  },
-  textResultView: {
-    fontSize: 20,
-  },
 };
 
 //Components
-
-class Top extends Component {
-  render() {
-    return (
-      <View>
-        <Image source={require('./img/jokenpo.png')} />
-      </View>
-    );
-  }
-}
-
-class Result extends Component {
-  render() {
-    //this.props.choice
-    //this.props.player
-    if (this.props.choice === 'Rock') {
-      return (
-        <View style={Style.iconResultView}>
-          <Text style={Style.textResultView}>{this.props.player}</Text>
-          <Image source={require('./img/pedra.png')} />
-        </View>
-      );
-    } else if (this.props.choice === 'Paper') {
-      return (
-        <View style={Style.iconResultView}>
-          <Text style={Style.textResultView}>{this.props.player}</Text>
-          <Image source={require('./img/papel.png')} />
-        </View>
-      );
-    } else if (this.props.choice === 'Scissors') {
-      return (
-        <View style={Style.iconResultView}>
-          <Text style={Style.textResultView}>{this.props.player}</Text>
-          <Image source={require('./img/tesoura.png')} />
-        </View>
-      );
-    } else {
-      return false;
-    }
-  }
-}
 
 //Passando valores para components utilizando {props}
 
