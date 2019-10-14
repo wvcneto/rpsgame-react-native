@@ -1,6 +1,6 @@
 //Imports
 import React, {Component} from 'react';
-import {AppRegistry, View, Text} from 'react-native';
+import {AppRegistry, View, Text, Button} from 'react-native';
 
 //Style
 
@@ -11,18 +11,37 @@ class MyComponent extends Component {
     return (
       <View>
         <Text>{this.props.prop1}</Text>
-        <Text>{this.props.prop2}</Text>
-        <Text>{this.props.prop3}</Text>
       </View>
     );
   }
 }
 
-//Passando valores para components utilizando props
+//Passando valores para components utilizando {props}
 
 class rpsgame extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {texto: 'Texto Teste'};
+  }
+
+  //Utilizando {states} para alterar valores de um component
+  changeText() {
+    this.setState({texto: 'Outro Texto'});
+  }
+
   render() {
-    return <MyComponent prop1="Café" prop2="Chocolate" prop3="Frutas" />;
+    return (
+      <View>
+        <MyComponent prop1={this.state.texto} />
+        <Button
+          title="Press"
+          onPress={() => {
+            this.changeText();
+          }}
+        />
+      </View>
+    );
   }
 }
 
