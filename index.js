@@ -12,25 +12,64 @@ class rpsgame extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { userChoice: '', computerChoice: '' };
+    this.state = {userChoice: '', computerChoice: '', result: ''};
   }
 
-  jokenpo(choice) {
+  jokenpo(userChoice) {
     var rand = Math.floor(Math.random() * 3);
-    var compChoice = '';
+    var computerChoice = '';
 
     switch (rand) {
       case 0:
-        compChoice = 'Rock';
+        computerChoice = 'Rock';
         break;
       case 1:
-        compChoice = 'Paper';
+        computerChoice = 'Paper';
         break;
       case 2:
-        compChoice = 'Scissors';
+        computerChoice = 'Scissors';
         break;
     }
-    this.setState({userChoice: choice, computerChoice: compChoice}); // alterando o state de acordo com a chamada
+
+    var result = '';
+
+    if (computerChoice === 'Rock') {
+      if (userChoice === 'Rock') {
+        result = 'Draw';
+      }
+      if (userChoice === 'Paper') {
+        result = 'Won';
+      }
+      if (userChoice === 'Scissors') {
+        result = 'Lost';
+      }
+    } else if (computerChoice === 'Paper') {
+      if (userChoice === 'Rock') {
+        result = 'Lost';
+      }
+      if (userChoice === 'Paper') {
+        result = 'Draw';
+      }
+      if (userChoice === 'Scissors') {
+        result = 'Won';
+      }
+    } else if (computerChoice === 'Scissors') {
+      if (userChoice === 'Rock') {
+        result = 'Won';
+      }
+      if (userChoice === 'Paper') {
+        result = 'Lost';
+      }
+      if (userChoice === 'Scissors') {
+        result = 'Draw';
+      }
+    }
+
+    this.setState({
+      userChoice: userChoice,
+      computerChoice: computerChoice,
+      result: result,
+    }); // alterando o state
   }
 
   render() {
@@ -38,7 +77,7 @@ class rpsgame extends Component {
       <View>
         <Text>Computer: {this.state.computerChoice}</Text>
         <Text>Player: {this.state.userChoice}</Text>
-        <Text>Resultador: </Text>
+        <Text>Resultador: {this.state.result}</Text>
         <Button
           title="Rock"
           onPress={() => {
