@@ -6,38 +6,41 @@ import {AppRegistry, View, Text, Button} from 'react-native';
 
 //Components
 
-class MyComponent extends Component {
-  render() {
-    return (
-      <View>
-        <Text>{this.props.prop1}</Text>
-      </View>
-    );
-  }
-}
-
 //Passando valores para components utilizando {props}
 
 class rpsgame extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
 
-    this.state = {texto: 'Texto Teste'};
+    this.state = {choice: ''};
   }
 
-  //Utilizando {states} para alterar valores de um component
-  changeText() {
-    this.setState({texto: 'Outro Texto'});
+  jokenpo(userChoice) {
+    this.setState({choice: userChoice}); // alterando o state de acordo com a chamada
   }
 
   render() {
     return (
       <View>
-        <MyComponent prop1={this.state.texto} />
+        <Text>Computer: </Text>
+        <Text>Player: {this.state.choice}</Text>
+        <Text>Resultador: </Text>
         <Button
-          title="Press"
+          title="Rock"
           onPress={() => {
-            this.changeText();
+            this.jokenpo('Rock');
+          }}
+        />
+        <Button
+          title="Paper"
+          onPress={() => {
+            this.jokenpo('Paper');
+          }}
+        />
+        <Button
+          title="Scissors"
+          onPress={() => {
+            this.jokenpo('Scissors');
           }}
         />
       </View>
